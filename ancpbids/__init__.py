@@ -4,18 +4,19 @@ import sys
 from dataclasses import dataclass
 from typing import Union, List, Optional
 
+# from . import plugins
 from ancpbids import plugins
-from ancpbids import utils
-from . import model_v1_8_0
-from . import model_v1_9_0
-from . import model_v1_10_0
-# latest stable supported BIDS schema
-from ancpbids import model_v1_10_0 as model_latest
 
+from ancpbids import utils
 from .plugin import get_plugins, load_plugins_by_package, DatasetPlugin, WritingPlugin, ValidationPlugin, SchemaPlugin, \
     FileHandlerPlugin
 from .query import BoolExpr, Select, EqExpr, AnyExpr, AllExpr, ReExpr, CustomOpExpr, \
     EntityExpr
+from . import model_v1_8_0
+from . import model_v1_8_0 as model_latest
+
+from . import model_v1_9_0
+from . import model_v1_9_0 as model_latest
 
 LOGGER = logging.getLogger("ancpbids")
 
@@ -184,14 +185,12 @@ load_plugins_by_package(plugins, ranking=0, system=True)
 
 # execute all SchemaPlugins, these plugins may monkey-patch the schema
 for pl in get_plugins(SchemaPlugin):
-    for schema in [model_v1_8_0, model_v1_9_0, model_v1_10_0]:
+    for schema in [model_v1_8_0, model_v1_9_0]:
         pl.execute(schema)
 
 # load file handler plugins
 for pl in get_plugins(FileHandlerPlugin):
     pl.execute(utils.FILE_READERS, utils.FILE_WRITERS)
-
-from .pybids_compat import BIDSLayout
 
 select = Select
 any_of = AnyExpr
