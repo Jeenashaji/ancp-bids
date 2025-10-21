@@ -1,3 +1,4 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/ANCPLabOldenburg/ancp-bids)
 [![Documentation Status](https://readthedocs.org/projects/ancpbids/badge/?version=latest)](http://ancpbids.readthedocs.io/en/latest/?badge=latest)
 [![Latest Version](https://img.shields.io/pypi/v/ancpbids.svg)](https://pypi.python.org/pypi/ancpbids/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ancpbids.svg)](https://pypi.python.org/pypi/ancpbids/)
